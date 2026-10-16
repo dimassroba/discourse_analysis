@@ -1,7 +1,5 @@
 import csv
 from scipy import stats
-
-# Load data
 sentiment = []
 upvotes = []
 
@@ -11,14 +9,10 @@ with open('../data/comments_with_sentiment.csv', 'r', encoding='utf-8') as f:
         v = int(row['score'])
         sentiment.append(s)
         upvotes.append(v)
-
-# Pearson correlation
 r, p = stats.pearsonr(sentiment, upvotes)
 print("Pearson correlation")
 print("  r = " + str(round(r, 4)))
 print("  p = " + str(round(p, 4)))
-
-# Spearman rank correlation
 rho, p2 = stats.spearmanr(sentiment, upvotes)
 print()
 print("Spearman rank correlation")
