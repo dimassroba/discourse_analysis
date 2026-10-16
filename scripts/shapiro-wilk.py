@@ -13,7 +13,6 @@ with open('../data/comments_with_sentiment.csv', 'r', encoding='utf-8') as f:
         else:
             rep.append(s)
 
-# Shapiro-Wilk for top-level
 w1, p1 = stats.shapiro(top)
 print("Top-level (n=" + str(len(top)) + ")")
 print("  W = " + str(round(w1, 4)))
@@ -25,7 +24,6 @@ else:
 
 print()
 
-# Shapiro-Wilk for replies
 w2, p2 = stats.shapiro(rep)
 print("Replies (n=" + str(len(rep)) + ")")
 print("  W = " + str(round(w2, 4)))
