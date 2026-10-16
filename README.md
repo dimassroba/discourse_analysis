@@ -1,5 +1,4 @@
-**Sentiment Dynamics in a Reddit Thread:**
-Provocation, depth and limits of voting
+**Sentiment and depth in a Reddit Thread: A small scale analysis**
 
 ---
 
