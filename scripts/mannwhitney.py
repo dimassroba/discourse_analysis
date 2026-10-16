@@ -1,10 +1,7 @@
 import csv
 from scipy import stats
-
-# Load the data
 top = []
 rep = []
-
 with open('../data/comments_with_sentiment.csv', 'r', encoding='utf-8') as f:
     for row in csv.DictReader(f):
         s = float(row['sentiment'])
@@ -13,8 +10,6 @@ with open('../data/comments_with_sentiment.csv', 'r', encoding='utf-8') as f:
             top.append(s)
         else:
             rep.append(s)
-
-# Mann-Whitney U test
 u, p = stats.mannwhitneyu(top, rep, alternative='two-sided')
 print("Top-level (n=" + str(len(top)) + ")")
 print("Replies   (n=" + str(len(rep)) + ")")
