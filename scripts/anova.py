@@ -1,41 +1,30 @@
 import csv
 from scipy import stats
-
-# Load data by depth
 depths = {}
-
 with open('../data/comments_with_sentiment.csv', 'r', encoding='utf-8') as f:
     for row in csv.DictReader(f):
         d = int(row['depth'])
         s = float(row['sentiment'])
         depths.setdefault(d, []).append(s)
-
-# Print group sizes
 print("Group sizes:")
 for d in sorted(depths.keys()):
     print("  depth " + str(d) + ": n=" + str(len(depths[d])))
-
-# One-way ANOVA (only use depths with n >= 2)
 groups = [depths[d] for d in sorted(depths.keys()) if len(depths[d]) >= 2]
-
 f_stat, p = stats.f_oneway(*groups)
 print()
 print("One-way ANOVA")
 print("  F = " + str(round(f_stat, 4)))
 print("  p = " + str(round(p, 4)))
-
 if p < 0.05:
     print("  Result: SIGNIFICANT — sentiment differs across depths")
 else:
     print("  Result: NOT significant — depth does not explain sentiment")
-
-# Kruskal-Wallis (non-parametric alternative)
+# Kruskalwallis
 h_stat, p2 = stats.kruskal(*groups)
 print()
 print("Kruskal-Wallis (non-parametric)")
 print("  H = " + str(round(h_stat, 4)))
 print("  p = " + str(round(p2, 4)))
-
 if p2 < 0.05:
     print("  Result: SIGNIFICANT")
 else:
