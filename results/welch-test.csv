@@ -1,0 +1,2 @@
+test,statistic,p_value,group1_mean,group1_n,group2_mean,group2_n
+welch_ttest,-2.6921,0.0103,-0.3017,30,0.0462,148
